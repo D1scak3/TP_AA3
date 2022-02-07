@@ -6,9 +6,10 @@
 # Using delta and epsilon as suggested in https://github.com/AWNystrom/CountMinSketch
 #
 # J. Madeira --- December 2018
-#
+
+
 # Alterado por Migel Filipe Rodrigues Almeida de Matos Fazenda
-# apenas foi adicionado o delta e o epsilon como ATRIBUTOS
+# apenas foi adicionado o delta e o epsilon como ATRIBUTOS e comentado o print com as caraterísticas
 
 import array
 
@@ -52,14 +53,15 @@ class CountMinSketch(object):
             self.epsilon = float(2 / m)
         elif delta is not None and epsilon is not None:
             # Computing the size of the sketch
-            self.m = math.ceil(2.0 / epsilon)  # arredonda para o prox valor inteiro
-            self.d = math.ceil(math.log(1.0 / delta))  # arredonda para o prox valor inteiro
+            self.m = int(math.ceil(2.0 / epsilon))  # arredonda para o prox valor inteiro
+            self.d = int(math.log(epsilon, 0.5))  # arredonda para o prox valor inteiro
             self.delta = delta
             self.epsilon = epsilon
         else:
             raise ValueError("You must either supply both m and d or delta and epsilon.")
 
-        print("CM Sketch with " + str(self.m) + " columns and " + str(self.d) + " rows")
+        # print("CM Sketch with " + str(self.m) + " columns and " + str(self.d) + " rows")
+        # print(f"m: {self.m}\td: {self.d}\tdelta: {self.delta}\tepsilon: {self.epsilon}")
 
         self.n = 0
 
